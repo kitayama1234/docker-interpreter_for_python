@@ -10,17 +10,17 @@
   
 ### image (インタープリタ) 作成
 ```
-sudo docker build -t my_interpreter .
+docker build -t my_interpreter .
 ```
   
 ### imageでコンテナを立ち上げてbashで接続
 ```
-sudo docker run -it --rm my_interpreter bash
+docker run -it --rm my_interpreter bash
 ```
   
 ### imageをインタープリタとして共有ディレクトリ配下スクリプト実行
 ```
-sudo docker run --rm -v ${PWD}/code:/code my_interpreter python script.py
+docker run --rm -v ${PWD}/code:/code my_interpreter python script.py
 ```
   
 ### jupyter notebook
