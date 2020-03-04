@@ -1,8 +1,12 @@
 # Dockerを利用したpythonインタープリタ作成および活用
   
-### 準備するもの
-* requirements.txt
-* Dockerfileなど
+### 準備
+- requirements.txt
+  * 必要なpythonのモジュールを記述
+- Dockerfile
+　　* そのまま
+- entrypoint.sh
+  * LOCAL_UIDとLOCAL_GIDをホストのものに変えると良い（権限周りのトラブル回避）
   
 ### image (インタープリタ) 作成
 ```
