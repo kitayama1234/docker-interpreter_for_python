@@ -4,7 +4,7 @@
 - requirements.txt
   * 必要なpythonのモジュールを記述
 - Dockerfile
-　　* そのまま
+  * そのまま
 - entrypoint.sh
   * LOCAL_UIDとLOCAL_GIDをホストのものに変えると良い（権限周りのトラブル回避）
   
