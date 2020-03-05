@@ -1,13 +1,24 @@
 FROM python:3.7
 
-RUN apt-get update && apt-get -y install gosu
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
+RUN apt-get update
 
-RUN mkdir /code
-WORKDIR /code
-
-ADD requirements.txt /code/
+### python環境構築
+ADD requirements.txt .
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+### 一般ユーザとしてuser作成
+ARG uname
+
+ARG uid
+RUN useradd -u $uid -o -m $uname
+
+ARG gid
+RUN groupmod -g $gid -o $uname
+
+RUN export HOME=/home/${uname}
+
+USER $uid
+
+### 作業ディレクトリ作成(コンテナ立ち上げ時にマウントするディレクトリ)
+RUN mkdir /home/${uname}/code
+WORKDIR /home/${uname}/code

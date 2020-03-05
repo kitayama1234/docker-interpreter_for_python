@@ -5,20 +5,23 @@
   * お好みのpythonイメージを指定
 - requirements.txt
   * 必要なpythonのモジュールを記述
-- entrypoint.sh
-  * LOCAL_UIDとLOCAL_GIDをホストのものに変えると良い（権限周りのトラブル回避）
   
 ### image (インタープリタ) 作成
 ```
-docker build -t my_interpreter .
+docker build \
+-t py_interpreter \
+--build-arg uname=${USER} \
+--build-arg uid=${UID} \
+--build-arg gid=$(id -g) \
+.
 ```
   
 ### imageをインタープリタとして共有ディレクトリ配下スクリプト実行
 ```
-docker run --rm -v ${PWD}/code:/code my_interpreter python script.py
+docker run --rm -v ${PWD}/code:/home/${USER}/code py_interpreter python script.py
 ```
   
 ### jupyter notebook
 ```
-docker run --rm -v ${PWD}/code:/code -p 8888:8888 my_interpreter jupyter notebook --port 8888 --ip=0.0.0.0 --allow-root
+docker run --rm -v ${PWD}/code:/home/${USER}/code -p 8888:8888 py_interpreter jupyter notebook --port 8888 --ip=0.0.0.0 --allow-root
 ```
