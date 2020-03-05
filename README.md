@@ -23,5 +23,5 @@ docker run --rm -v ${PWD}/code:/home/${USER}/code py_interpreter python script.p
   
 ### jupyter notebook
 ```
-docker run --rm -v ${PWD}/code:/home/${USER}/code -p 8888:8888 py_interpreter jupyter notebook --port 8888 --ip=0.0.0.0 --allow-root
+docker run --rm -v ${PWD}/code:/home/${USER}/code -p 8888:8888 py_interpreter jupyter notebook --port 8888 --ip=0.0.0.0
 ```
