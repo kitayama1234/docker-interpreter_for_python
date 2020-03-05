@@ -13,11 +13,6 @@
 docker build -t my_interpreter .
 ```
   
-### imageでコンテナを立ち上げてbashで接続
-```
-docker run -it --rm my_interpreter bash
-```
-  
 ### imageをインタープリタとして共有ディレクトリ配下スクリプト実行
 ```
 docker run --rm -v ${PWD}/code:/code my_interpreter python script.py
