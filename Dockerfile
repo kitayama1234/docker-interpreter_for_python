@@ -20,5 +20,5 @@ RUN export HOME=/home/${uname}
 USER $uid
 
 ### 作業ディレクトリ作成(コンテナ立ち上げ時にマウントするディレクトリ)
-RUN mkdir /home/${uname}/code
-WORKDIR /home/${uname}/code
+RUN mkdir /home/${uname}/work
+WORKDIR /home/${uname}/work

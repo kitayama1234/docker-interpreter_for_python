@@ -18,10 +18,10 @@ docker build \
   
 ### imageをインタープリタとして共有ディレクトリ配下スクリプト実行
 ```
-docker run --rm -v ${PWD}/code:/home/${USER}/code py_interpreter python script.py
+docker run --rm -v ${PWD}/work:/home/${USER}/work py_interpreter python script.py
 ```
   
 ### jupyter notebook
 ```
-docker run --rm -v ${PWD}/code:/home/${USER}/code -p 8888:8888 py_interpreter jupyter notebook --port 8888 --ip=0.0.0.0
+docker run --rm -v ${PWD}/work:/home/${USER}/work -p 8888:8888 py_interpreter jupyter notebook --port 8888 --ip=0.0.0.0
 ```
