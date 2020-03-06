@@ -22,8 +22,9 @@ RUN echo "${uname} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 RUN export HOME=/home/${uname}
 
+### 作成したユーザーでログインする
 USER $uid
 
-### 作業ディレクトリ作成(コンテナ立ち上げ時にマウントするディレクトリ)
+### ホストにマウントする作業ディレクトリ作成
 RUN mkdir /home/${uname}/work
 WORKDIR /home/${uname}/work
