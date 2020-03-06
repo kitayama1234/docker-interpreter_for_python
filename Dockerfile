@@ -1,19 +1,23 @@
 FROM python:3.7
 
 RUN apt-get update
+RUN apt-get install -y sudo
 
 ### python環境構築
 ADD requirements.txt .
 RUN pip install -r requirements.txt
 
-### 一般ユーザとしてuser作成
+### build時に引数として与えられたuname、uid、gidからsudo権限持ちユーザー作成
 ARG uname
-
 ARG uid
-RUN useradd -u $uid -o -m $uname
-
 ARG gid
-RUN groupmod -g $gid -o $uname
+
+RUN useradd -u $uid -o -m $uname && \
+    groupmod -g $gid -o $uname && \
+    chpasswd ${uname}:defaultpw
+
+RUN echo 'Defaults visiblepw' >> /etc/sudoers
+RUN echo "${uname} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 RUN export HOME=/home/${uname}
 
