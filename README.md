@@ -21,6 +21,11 @@ docker build \
 ```
 docker run --rm -v ${PWD}/work:/home/${USER}/work py_interpreter gosu ${USER} python script.py
 ```
+
+### gpu
+```
+docker run --rm --gpus=all -v ${PWD}/work:/home/${USER}/work py_interpreter gosu ${USER} python -u test_cuda.py
+```
   
 ### jupyter notebook
 ```
