@@ -3,9 +3,11 @@
 
 FROM pytorch/pytorch:1.6.0-cuda10.1-cudnn7-runtime
 
-RUN apt-get update
-RUN apt-get install -y sudo
-RUN apt-get install -y libgl1-mesa-dev
+RUN apt-get update && \
+    apt-get install -y gosu && \
+    apt-get install -y tzdata && \
+    apt-get install -y libgl1-mesa-dev && \
+    apt-get install -y libopencv-dev
 
 ### python環境構築
 ADD requirements.txt .
