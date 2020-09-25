@@ -33,7 +33,7 @@ docker run --rm -v ${PWD}/work:/home/${USER}/work -p 8888:8888 my_interpreter go
 ```
 
 ### Pytorch環境におけるGPU使用テスト
-(Dockerfile_gosuにてcuda対応バージョンのpytorchイメージを元イメージとして指定すること)
+(Dockerfileにてcuda対応バージョンのpytorchイメージを元イメージとして指定すること)
 ```
 docker run --rm --gpus=all -v ${PWD}/work:/home/${USER}/work my_interpreter gosu ${USER} python -u test_cuda.py
 ```
