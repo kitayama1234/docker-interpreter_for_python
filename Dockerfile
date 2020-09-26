@@ -2,7 +2,7 @@
 
 FROM pytorch/pytorch:1.6.0-cuda10.1-cudnn7-runtime
 
-# gosuやopencvバックエンドなどのインストール
+### gosuやopencv関連パッケージなどのインストール
 RUN apt-get update && \
     apt-get install -y gosu && \
     apt-get install -y tzdata && \
